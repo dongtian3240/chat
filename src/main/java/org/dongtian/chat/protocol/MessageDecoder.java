@@ -28,13 +28,7 @@ public class MessageDecoder extends CumulativeProtocolDecoder {
 			byte[] messageHead = new byte[MessagePacket.MESSAGE_HEAD_CONTENT_LENGTH];
 			in.get(messageHead);
 			int len = DataTypeUtils.bytes2Int(messageHead);
-			if(len >in.remaining()) {
-				//如果消息体还没有接收完 返回到指定的位置 
-				in.reset();
-				return false;
-			} else {
-				
-				byte[] bys = new byte[len];
+			byte[] bys = new byte[len];
 				in.get(bys);
 				//获取消息类型
 				byte[] messageType = new byte[MessagePacket.MESSAGE_TYPE_LENGTH];
@@ -47,9 +41,6 @@ public class MessageDecoder extends CumulativeProtocolDecoder {
 				MessagePacket messagePacket = new MessagePacket(session,messageBody,DataTypeUtils.bytes2Int(messageType));
 				out.write(messagePacket);
 				return true;
-				
-			}
-			
 		}
 	}
 
