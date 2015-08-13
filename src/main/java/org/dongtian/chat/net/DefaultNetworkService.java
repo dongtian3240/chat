@@ -1,4 +1,4 @@
-package org.dongtian.chat.session;
+package org.dongtian.chat.net;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.ConcurrentHashMap;
@@ -33,7 +33,6 @@ public final  class DefaultNetworkService implements NetworkService {
 	}
 
 	
-	
 	public void addClientUser(IoSession session) throws NoIpException {
 		
 		if (clientUsers.get(getIoSessionKey(session)) != null) {
@@ -43,6 +42,14 @@ public final  class DefaultNetworkService implements NetworkService {
 		clientUser.setIoSession(session);
 		clientUser.setOnline(true);
 		clientUsers.put(getIoSessionKey(session), clientUser);
+	}
+
+
+	public void removeClientUser(IoSession session) throws NoIpException {
+		String ioSessionKey = getIoSessionKey(session);
+		if (ioSessionKey != null && !"".equals(ioSessionKey)) {
+			clientUsers.remove(ioSessionKey);
+		}
 	}
 	
 }

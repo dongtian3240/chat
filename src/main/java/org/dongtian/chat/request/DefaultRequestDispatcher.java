@@ -19,6 +19,9 @@ public class DefaultRequestDispatcher implements RequestDispatcher {
 		
 		switch (messagePacket.getMessageType()) {
 		
+		case MessageTypeConstant.MESSAGE_TYPE_KEEP_ALIVE:
+			
+			break;
 		case MessageTypeConstant.MESSAGE_TYPE_LOGIN:
 			
 			break;

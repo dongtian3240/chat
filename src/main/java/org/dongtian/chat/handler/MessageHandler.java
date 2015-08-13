@@ -5,8 +5,8 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.dongtian.chat.entity.ClientUser;
 import org.dongtian.chat.message.MessagePacket;
+import org.dongtian.chat.net.NetworkService;
 import org.dongtian.chat.request.RequestDispatcher;
-import org.dongtian.chat.session.NetworkService;
 
 /**
  * 

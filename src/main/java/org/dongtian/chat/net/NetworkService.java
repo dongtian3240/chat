@@ -1,4 +1,4 @@
-package org.dongtian.chat.session;
+package org.dongtian.chat.net;
 
 import org.apache.mina.core.session.IoSession;
 import org.dongtian.chat.exception.NoIpException;
@@ -15,5 +15,5 @@ public interface NetworkService {
 	 * @param session
 	 */
 	void addClientUser(IoSession session) throws NoIpException;
-	
+	void removeClientUser(IoSession session) throws NoIpException;
 }
